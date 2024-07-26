@@ -1,0 +1,19 @@
+class Solution{
+	public:
+		vector<string> AllPossibleStrings(string s){
+		     vector<string> ans;
+		    int Size= s.size();
+		    
+		    for ( int i = 1 ; i < (1 << Size) ; i ++ ){
+		        string temp ; 
+		        for ( int j = 0 ; j < Size ; j ++ ){
+		            if ( (i & (1<<j))){
+		                temp.push_back ( s[j]);
+		            }
+		        }
+		        ans.push_back ( temp );
+		    }
+		    sort (ans.begin() , ans.end());
+		    return ans ; 
+		}
+};
