@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int minChar(string str){
+        //Write your code here
+       string rstr = str;
+       reverse(rstr.begin(),rstr.end());
+       string s = str+rstr;
+    //   cout << s << endl;
+       int j,n = s.size();
+        vector<int> p(n,0);
+        for(int i=1;i<n;i++){
+            j = p[i-1];
+            while(j and s[i]!=s[j])
+            j=p[j-1];
+            p[i] = (s[i]==s[j])+j;
+        }
+        return max(n/2-p[n-1],0);
+   }
+};
